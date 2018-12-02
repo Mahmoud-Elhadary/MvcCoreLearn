@@ -16,8 +16,7 @@ namespace MvcCoreLearn.Controllers
 
         public CategoriesController(ApplicationDbContext context)
         {
-            //Mahmoud Elhadary
-            //constractor 
+            
             _context = context;
         }
 

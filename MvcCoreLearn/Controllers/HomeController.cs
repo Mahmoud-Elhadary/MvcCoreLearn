@@ -12,6 +12,7 @@ namespace MvcCoreLearn.Controllers
     {
         public IActionResult Index()
         {
+            /////////////////////////////
             return View();
         }
 
