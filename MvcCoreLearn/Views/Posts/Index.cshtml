@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MvcCoreLearn.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead style="background-color:cadetblue">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicatioDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AutherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Readers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr style="background-color:aliceblue">
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.body)*@
+                @Html.Raw(item.body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicatioDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Readers)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ImageUrl)*@
+                <img class="img-rounded" src="@Url.Content("~/" + MvcCoreLearn.Properties.Resources.ImgFolder + "/" + item.ImageUrl)" width="150" height="90" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
